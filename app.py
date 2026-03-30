@@ -18,8 +18,9 @@ st.set_page_config(page_title="Movie Recommender", page_icon="🎬", layout="wid
 @st.cache_resource
 def load_data():
     movies = pd.read_parquet("movies.parquet")
-    indices      = pickle.load(open("indices.pkl",      "rb"))
-    tfidf_matrix = pickle.load(open("tfidf_matrix.pkl", "rb"))
+    indices_df = pd.read_csv("indices.csv")
+    indices = pd.Series(indices_df.index.values, index=indices_df.iloc[:, 0]).to_dict()
+    tfidf_matrix = scipy.sparse.load_npz("tfidf_matrix.npz")
     return movies, indices, tfidf_matrix
 
 movies, indices, tfidf_matrix = load_data()
