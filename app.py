@@ -72,6 +72,9 @@ if st.button("Recommend"):
             
             col_h1, col_h2 = st.columns([1, 5])
             with col_h1:
+                selected_data = movies.iloc[selected_idx]
+                if 'vote_average' in selected_data.index:
+                    st.caption(f"⭐ {selected_data['vote_average']:.1f}/10")
                 st.image(fetch_poster(selected_id), width=150)
             with col_h2:
                 st.subheader(f"Because you liked *{selected}*")
@@ -96,5 +99,9 @@ if st.button("Recommend"):
                     if i + j < len(movie_data_list):
                         movie_data = movie_data_list[i + j]
                         with cols[j]:
+
+                            if 'vote_average' in movie_data.index:
+                                st.caption(f"⭐ {movie_data['vote_average']:.1f}/10")
+                            
                             st.image(poster_urls[i + j], use_container_width=True)
                             st.caption(f"**{movie_data['title']}**")
