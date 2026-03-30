@@ -16,7 +16,7 @@ st.set_page_config(page_title="Movie Recommender", page_icon="🎬", layout="wid
 
 @st.cache_resource
 def load_data():
-    movies       = pickle.load(open("movies.pkl",       "rb"))
+    movies = pd.read_parquet("movies.parquet")
     indices      = pickle.load(open("indices.pkl",      "rb"))
     tfidf_matrix = pickle.load(open("tfidf_matrix.pkl", "rb"))
     return movies, indices, tfidf_matrix
