@@ -41,17 +41,6 @@ streamlit run app.py
    ```
    TMDB_API_KEY = your_actual_tmdb_api_key
    ```
-
-### Deploy to Heroku, Railway, Render, etc.
-
-1. Add `requirements.txt` and `.gitignore` (already included)
-2. Create a `Procfile` (for Heroku):
-   ```
-   web: streamlit run app.py --logger.level=error
-   ```
-3. Push to your chosen platform
-4. Set environment variables in platform settings
-
 ## Project Structure
 
 ```
